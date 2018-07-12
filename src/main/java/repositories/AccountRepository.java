@@ -1,10 +1,11 @@
 package repositories;
 
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import constants.Constants;
@@ -17,12 +18,13 @@ import entities.Account;
 
 
 @Transactional(REQUIRED)
-public class AccountRepository{
+public class AccountRepository implements iAccountRepository{
 	
 	@PersistenceContext(unitName = "primary")
 	private EntityManager em;
 	
-	private JSONUtility util;	
+	private JSONUtility util;
+
 	
 	public String createAnAccount(String account) {
 		Account aAccount = util.getObjectForJGson(account,Account.class);
@@ -30,7 +32,7 @@ public class AccountRepository{
 		return Constants.CREATE_MESSAGE;
 	}
 	
-	public String updateAnAccount(Long id, String originalAccount) {
+	public String updateAnAccount(long id, String originalAccount) {
 		Account updatedAccount = util.getObjectForJGson(originalAccount, Account.class);
 		Account accountInDB = getAccount(id);
 		if(originalAccount !=null) {
@@ -49,13 +51,14 @@ public class AccountRepository{
 	}
 
 	@Transactional(SUPPORTS)	
-	public List<Account> getAllAccounts() {
-		TypedQuery<Account> query = em.createQuery("SELECT * FROM Account", Account.class);
-        return query.getResultList();
+	public String getAllAccounts() {
+		Query qry = em.createQuery("SELECT * FROM Account");
+		Collection <Account> accounts = (Collection<Account>) qry.getResultList();
+        return util.getJGsonForObject(accounts);
 	}
 	
 	@Transactional(SUPPORTS)
-    public Account getAccount(Long id) {
+    public Account getAccount(long id) {
         return em.find(Account.class, id);
     }
 
