@@ -38,6 +38,10 @@ public class Account {
 		this.accountNumber = accountNumber;
 	}
 	
+	public void setID(long id) {
+		this.id = id;
+	}
+	
 	public long getID() {
 		return id;
 	}
