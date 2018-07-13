@@ -1,13 +1,11 @@
 package repositories;
 
-import java.util.Collection;
 import java.util.HashMap;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Alternative;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 
 import constants.Constants;
 

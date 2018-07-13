@@ -1,8 +1,8 @@
-package repositories;
+package business;
 
 import entities.Account;
 
-public interface iAccountRepository {
+public interface iAccountService {
 	
 	String createAnAccount(String account);
 	
