@@ -3,6 +3,7 @@ package repositories;
 import java.util.Collection;
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -23,6 +24,7 @@ public class AccountRepository implements iAccountRepository{
 	@PersistenceContext(unitName = "primary")
 	private EntityManager em;
 	
+	@Inject
 	private JSONUtility util;
 
 	
@@ -32,10 +34,10 @@ public class AccountRepository implements iAccountRepository{
 		return Constants.CREATE_MESSAGE;
 	}
 	
-	public String updateAnAccount(long id, String originalAccount) {
-		Account updatedAccount = util.getObjectForJGson(originalAccount, Account.class);
+	public String updateAnAccount(long id, String newAccount) {
+		Account updatedAccount = util.getObjectForJGson(newAccount, Account.class);
 		Account accountInDB = getAccount(id);
-		if(originalAccount !=null) {
+		if(accountInDB !=null) {
 			accountInDB = updatedAccount;
 			em.persist(accountInDB);
 		}
@@ -52,9 +54,7 @@ public class AccountRepository implements iAccountRepository{
 
 	@Transactional(SUPPORTS)	
 	public String getAllAccounts() {
-		Query qry = em.createQuery("SELECT * FROM Account");
-		Collection <Account> accounts = (Collection<Account>) qry.getResultList();
-        return util.getJGsonForObject(accounts);
+        return util.getJGsonForObject(em.createQuery("SELECT a FROM Account a").getResultList());
 	}
 	
 	@Transactional(SUPPORTS)

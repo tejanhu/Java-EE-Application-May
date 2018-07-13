@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Account {
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	@Column(length = 32)
 	private String firstName;
@@ -20,15 +20,19 @@ public class Account {
 	private String lastName;
 	@Column(length = 4)
 	private String accountNumber;
-	@OneToMany(
-	        mappedBy = "account", 
-	        cascade = CascadeType.ALL, 
-	        orphanRemoval = true
-	    )
-	private List<Transaction> transactions;
+//	@OneToMany(
+//	        mappedBy = "account", 
+//	        cascade = CascadeType.ALL, 
+//	        orphanRemoval = true
+//	    )
+//	private List<Transaction> transactions;
 	
-	public Account(long id, String firstName, String lastName, String accountNumber) {
-		this.id = id;
+	public Account() {
+		
+	}
+	
+	public Account(String firstName, String lastName, String accountNumber) {
+		
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.accountNumber = accountNumber;
@@ -66,14 +70,14 @@ public class Account {
 
 	
 	
-	
-	public void addTransaction(Transaction transaction) {
-        transactions.add(transaction);
-    }
- 
-    public void removeTransaction(Transaction transaction) {
-        transactions.remove(transaction);
-    }
-	
+//	
+//	public void addTransaction(Transaction transaction) {
+//        transactions.add(transaction);
+//    }
+// 
+//    public void removeTransaction(Transaction transaction) {
+//        transactions.remove(transaction);
+//    }
+//	
 
 }

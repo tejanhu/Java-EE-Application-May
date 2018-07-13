@@ -39,8 +39,8 @@ public class AccountMapRepository implements iAccountRepository{
 		return account;
 	}
 	
-	public String updateAnAccount(long id, String originalAccount) {
-		Account updatedAccount = util.getObjectForJGson(originalAccount, Account.class);
+	public String updateAnAccount(long id, String newAccount) {
+		Account updatedAccount = util.getObjectForJGson(newAccount, Account.class);
 		accountHashMap.put(id,updatedAccount);
 		return Constants.UPDATE_MESSAGE;
 	}

@@ -1,10 +1,13 @@
 package business;
 
+import javax.inject.Inject;
+
 import entities.Account;
 import util.JSONUtility;
 
 public class AccountChecker implements iAccountChecker{
 	
+	@Inject
 	private JSONUtility jsonUtil;
 	
 	public boolean validateAccNo(String account) {

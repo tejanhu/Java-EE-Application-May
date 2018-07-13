@@ -18,9 +18,9 @@ public class Transaction {
 	
 	
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "ACCOUNT_ID")
-	private Account account;
+//	@ManyToOne(fetch = FetchType.LAZY)
+//	@JoinColumn(name = "ACCOUNT_ID")
+//	private Account account;
 	
 	@Column(length = 32)
 	private String name;
@@ -48,12 +48,12 @@ public class Transaction {
 		return name;
 	}
 	
-	public void setAccount(Account account) {
-		this.account = account;
-	}
-	
-	public Account getAccount() {
-		return account;
-	}
+//	public void setAccount(Account account) {
+//		this.account = account;
+//	}
+//	
+//	public Account getAccount() {
+//		return account;
+//	}
 
 }
