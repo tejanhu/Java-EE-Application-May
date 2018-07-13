@@ -15,10 +15,9 @@ public class AccountService implements iAccountService {
 	private AccountChecker accountChecker;
 
 	public String createAnAccount(String account) {
-		if(accountChecker.getValidity(account)) {
+		if(accountChecker.validateFirstName(account) || accountChecker.validateSurame(account) ||accountChecker.validateAccNo(account)) {
 			return Constants.ERROR_MESSAGE;
 		}
-		
 		else {
 			return repo.createAnAccount(account);
 		}
