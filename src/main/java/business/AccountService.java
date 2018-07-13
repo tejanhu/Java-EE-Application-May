@@ -23,8 +23,16 @@ public class AccountService implements iAccountService {
 		}
 	}
 
-	public String updateAnAccount(long id, String originalAccount) {
-		return repo.updateAnAccount(id,originalAccount);
+	public String updateAnAccount(long id, String newAccount) {
+		
+		if( !accountChecker.validateFirstName(newAccount) || !accountChecker.validateSurame(newAccount) || !accountChecker.validateAccNo(newAccount)) {
+			return Constants.ERROR_MESSAGE;
+		}
+		else {
+			return repo.updateAnAccount(id,newAccount);
+		}
+		
+		
 	}
 
 	public String deleteAccount(long id) {
