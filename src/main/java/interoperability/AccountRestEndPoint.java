@@ -47,7 +47,7 @@ public class AccountRestEndPoint {
 	@Path("/json/{id}")
 	@DELETE
 	@Produces({"application/json"})
-	public String updateAccount(@PathParam("id") long id){
+	public String deleteAccount(@PathParam("id") long id){
 		return accountService.deleteAccount(id);
 	}
 	
