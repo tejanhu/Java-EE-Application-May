@@ -4,47 +4,52 @@ import javax.inject.Inject;
 
 import constants.Constants;
 import entities.Account;
+import entities.Transaction;
 import repositories.iAccountRepository;
+import repositories.iTransactionRepository;
 
-public class TransactionService implements iAccountService {
+public class TransactionService implements iTransactionService {
 	
 	@Inject
-	private iAccountRepository repo;
+	private iTransactionRepository repo;
 	
-	@Inject
-	private AccountChecker accountChecker;
+//	@Inject
+//	private AccountChecker accountChecker;
 
-	public String createAnAccount(String account) {
-		if( !accountChecker.validateFirstName(account) || !accountChecker.validateSurame(account) || !accountChecker.validateAccNo(account)) {
-			return Constants.ERROR_MESSAGE;
-		}
-		else {
-			return repo.createAnAccount(account);
-		}
+	public String createTransaction(String transaction) {
+//		if( !accountChecker.validateFirstName(account) || !accountChecker.validateSurame(account) || !accountChecker.validateAccNo(account)) {
+//			return Constants.ERROR_MESSAGE;
+//		}
+//		else {
+			return repo.createTransaction(transaction);
+//		}
 	}
 
-	public String updateAnAccount(long id, String newAccount) {
+	public String updateTransaction(long id, String newTransaction) {
 		
-		if( !accountChecker.validateFirstName(newAccount) || !accountChecker.validateSurame(newAccount) || !accountChecker.validateAccNo(newAccount)) {
-			return Constants.ERROR_MESSAGE;
-		}
-		else {
-			return repo.updateAnAccount(id,newAccount);
-		}
+//		if( !accountChecker.validateFirstName(newAccount) || !accountChecker.validateSurame(newAccount) || !accountChecker.validateAccNo(newAccount)) {
+//			return Constants.ERROR_MESSAGE;
+//		}
+//		else {
+			return repo.updateTransaction(id,newTransaction);
+//		}
 		
 		
 	}
 
-	public String deleteAccount(long id) {
-		return repo.deleteAccount(id);
+	public String deleteTransaction(long id) {
+		return repo.deleteTransaction(id);
 	}
 
-	public String getAllAccounts() {
-		return repo.getAllAccounts();
+	public String getAllTransactions() {
+		return repo.getAllTransactions();
 	}
 
-	public Account getAccount(long id) {
-		return repo.getAccount(id);
+
+	public Transaction getTransaction(long id) {
+		return repo.getTransaction(id);
 	}
+
+
 
 }
