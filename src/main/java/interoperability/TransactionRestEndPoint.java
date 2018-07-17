@@ -9,11 +9,16 @@ package interoperability;
 	import javax.ws.rs.Path;
 	import javax.ws.rs.PathParam;
 	import javax.ws.rs.Produces;
-	import business.TransactionService;
+
+import org.apache.log4j.Logger;
+
+import business.TransactionService;
 	import entities.Transaction;
 
 	@Path("/transaction")
 	public class TransactionRestEndPoint {
+		
+		private static final Logger LOGGER = Logger.getLogger(TransactionRestEndPoint.class);
 
 		@Inject
 		private TransactionService transactionService;
@@ -22,6 +27,7 @@ package interoperability;
 		@GET
 		@Produces({"application/json"})
 		public Transaction getTransaction(@PathParam("id") long id){
+			LOGGER.info("In TransactionRestEndPoint getTransaction");
 			return transactionService.getTransaction(id);
 		}
 		
@@ -29,6 +35,7 @@ package interoperability;
 		@GET
 		@Produces({"application/json"})
 		public String getAllTransactions(){
+			LOGGER.info("In TransactionRestEndPoint getAllTransactions");
 			return transactionService.getAllTransactions();
 		}
 		
@@ -36,6 +43,7 @@ package interoperability;
 		@POST
 		@Produces({"application/json"})
 		public String createTransaction(String transaction){
+			LOGGER.info("In TransactionRestEndPoint createTransaction");
 			return transactionService.createTransaction(transaction);
 		}
 		
@@ -43,6 +51,7 @@ package interoperability;
 		@PUT
 		@Produces({"application/json"})
 		public String updateTransaction(@PathParam("id") long id, String newTransaction){
+			LOGGER.info("In TransactionRestEndPoint updateTransaction");
 			return transactionService.updateTransaction(id, newTransaction);
 		}
 		
@@ -50,6 +59,7 @@ package interoperability;
 		@DELETE
 		@Produces({"application/json"})
 		public String deleteTransaction(@PathParam("id") long id){
+			LOGGER.info("In TransactionRestEndPoint deleteTransaction");
 			return transactionService.deleteTransaction(id);
 		}
 		

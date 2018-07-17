@@ -2,11 +2,15 @@ package business;
 
 import javax.inject.Inject;
 
+import org.apache.log4j.Logger;
+
 import constants.Constants;
 import entities.Transaction;
 import repositories.iTransactionRepository;
 
 public class TransactionService implements iTransactionService {
+	
+	private static final Logger LOGGER = Logger.getLogger(TransactionService.class);
 	
 	@Inject
 	private iTransactionRepository repo;
@@ -19,6 +23,7 @@ public class TransactionService implements iTransactionService {
 //			return Constants.ERROR_MESSAGE;
 //		}
 //		else {
+		LOGGER.info("In TransactionService createTransaction");
 			return repo.createTransaction(transaction);
 //		}
 	}
@@ -29,6 +34,7 @@ public class TransactionService implements iTransactionService {
 //			return Constants.ERROR_MESSAGE;
 //		}
 //		else {
+		LOGGER.info("In TransactionService updateTransaction");
 			return repo.updateTransaction(id,newTransaction);
 //		}
 		
@@ -36,15 +42,18 @@ public class TransactionService implements iTransactionService {
 	}
 
 	public String deleteTransaction(long id) {
+		LOGGER.info("In TransactionService deleteTransaction");
 		return repo.deleteTransaction(id);
 	}
 
 	public String getAllTransactions() {
+		LOGGER.info("In TransactionService getAllTransactions");
 		return repo.getAllTransactions();
 	}
 
 
 	public Transaction getTransaction(long id) {
+		LOGGER.info("In TransactionService getTransaction");
 		return repo.getTransaction(id);
 	}
 
