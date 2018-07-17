@@ -1,4 +1,4 @@
-package interoperability;
+package interoperability.rest;
 
 
 	import javax.inject.Inject;
