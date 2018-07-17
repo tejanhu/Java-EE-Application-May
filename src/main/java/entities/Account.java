@@ -9,16 +9,20 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Account {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	@Column(length = 32)
+	@NotNull
 	private String firstName;
 	@Column(length = 32)
+	@NotNull
 	private String lastName;
 	@Column(length = 4)
+	@NotNull
 	private String accountNumber;
 	@OneToMany(
 	        mappedBy = "account_id", 

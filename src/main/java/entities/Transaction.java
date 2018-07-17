@@ -8,6 +8,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Transaction {
@@ -20,6 +23,8 @@ public class Transaction {
 	private long account_id;
 	
 	@Column(length = 32)
+	@NotNull
+	@NotEmpty
 	private String name;
 	
 	private Transaction() {
