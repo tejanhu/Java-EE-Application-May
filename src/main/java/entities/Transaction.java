@@ -16,15 +16,11 @@ public class Transaction {
 	@GeneratedValue(strategy=GenerationType.AUTO)	
 	private long transaction_id;
 	
-	
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "ACCOUNT_ID")
-	private Account account;
+	@Column(name = "ACCOUNT_ID")
+	private long account_id;
 	
 	@Column(length = 32)
 	private String name;
-	
 	
 	private Transaction() {
 	
@@ -51,12 +47,9 @@ public class Transaction {
 		return name;
 	}
 	
-	public void setAccount(Account account) {
-		this.account = account;
-	}
-	
-	public Account getAccount() {
-		return account;
+
+	public long getAccount() {
+		return account_id;
 	}
 
 }

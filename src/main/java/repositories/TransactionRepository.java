@@ -9,7 +9,6 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 import constants.Constants;
-import entities.Account;
 import entities.Transaction;
 import util.JSONUtility;
 
@@ -25,7 +24,7 @@ public class TransactionRepository implements iTransactionRepository{
 	public String createTransaction(String transaction) {
 		Transaction aTransaction = util.getObjectForJGson(transaction,Transaction.class);
 		em.persist(aTransaction);
-		return Constants.CREATE_MESSAGE;
+		return Constants.CREATE_TRANSACTION_MESSAGE;
 	}
 
 	public String updateTransaction(long id, String newTransaction) {
@@ -35,7 +34,7 @@ public class TransactionRepository implements iTransactionRepository{
 			transactionInDB = updatedTransaction;
 			em.persist(transactionInDB);
 		}
-		return Constants.UPDATE_MESSAGE;
+		return Constants.UPDATE_TRANSACTION_MESSAGE;
 	}
 
 	public String deleteTransaction(long id) {
@@ -43,7 +42,7 @@ public class TransactionRepository implements iTransactionRepository{
 		if(transactionInDB!=null) {
 			em.remove(transactionInDB);
 		}
-		return Constants.DELETE_MESSAGE;
+		return Constants.DELETE_TRANSACTION_MESSAGE;
 	}
 	@Transactional(SUPPORTS)
 	public String getAllTransactions() {

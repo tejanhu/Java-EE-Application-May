@@ -21,7 +21,7 @@ public class Account {
 	@Column(length = 4)
 	private String accountNumber;
 	@OneToMany(
-	        mappedBy = "account", 
+	        mappedBy = "account_id", 
 	        cascade = CascadeType.ALL, 
 	        orphanRemoval = true
 	    )

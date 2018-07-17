@@ -44,12 +44,12 @@ public class AccountMapRepository implements iAccountRepository{
 		Account updatedAccount = util.getObjectForJGson(newAccount, Account.class);
 		updatedAccount.setID(id);
 		accountHashMap.put(id,updatedAccount);
-		return Constants.UPDATE_MESSAGE;
+		return Constants.UPDATE_ACCOUNT_MESSAGE;
 	}
 	
 	public String deleteAccount(long id) {
 		accountHashMap.remove(id);
-		return Constants.DELETE_MESSAGE;
+		return Constants.DELETE_ACCOUNT_MESSAGE;
 	}
 
 		

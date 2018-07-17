@@ -3,9 +3,7 @@ package business;
 import javax.inject.Inject;
 
 import constants.Constants;
-import entities.Account;
 import entities.Transaction;
-import repositories.iAccountRepository;
 import repositories.iTransactionRepository;
 
 public class TransactionService implements iTransactionService {

@@ -16,7 +16,7 @@ public class AccountService implements iAccountService {
 
 	public String createAnAccount(String account) {
 		if( !accountChecker.validateFirstName(account) || !accountChecker.validateSurame(account) || !accountChecker.validateAccNo(account)) {
-			return Constants.ERROR_MESSAGE;
+			return Constants.ERROR_ACCOUNT_MESSAGE;
 		}
 		else {
 			return repo.createAnAccount(account);
@@ -26,7 +26,7 @@ public class AccountService implements iAccountService {
 	public String updateAnAccount(long id, String newAccount) {
 		
 		if( !accountChecker.validateFirstName(newAccount) || !accountChecker.validateSurame(newAccount) || !accountChecker.validateAccNo(newAccount)) {
-			return Constants.ERROR_MESSAGE;
+			return Constants.ERROR_ACCOUNT_MESSAGE;
 		}
 		else {
 			return repo.updateAnAccount(id,newAccount);

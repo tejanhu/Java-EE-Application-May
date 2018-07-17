@@ -1,6 +1,5 @@
 package business;
 
-import entities.Account;
 import entities.Transaction;
 
 public interface iTransactionService {

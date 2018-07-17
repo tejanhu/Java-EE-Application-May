@@ -1,6 +1,5 @@
 package repositories;
 
-import entities.Account;
 import entities.Transaction;
 
 public interface iTransactionRepository {
