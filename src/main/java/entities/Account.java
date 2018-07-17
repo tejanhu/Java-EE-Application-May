@@ -35,11 +35,13 @@ public class Account {
 		
 	}
 	
-	public Account(String firstName, String lastName, String accountNumber) {
+	public Account(String firstName, String lastName, String accountNumber, List<Transaction> transactions) {
 		
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.accountNumber = accountNumber;
+		this.transactions = transactions;
+
 	}
 	
 	public void setID(long id) {
@@ -76,7 +78,9 @@ public class Account {
 	}
 	
 
-	
+	public List<Transaction> getTransaction() {
+       return transactions;
+    }
 	
 	
 	public void addTransaction(Transaction transaction) {

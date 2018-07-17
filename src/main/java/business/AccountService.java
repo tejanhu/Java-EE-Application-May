@@ -6,6 +6,7 @@ import org.apache.log4j.Logger;
 
 import constants.Constants;
 import entities.Account;
+import repositories.AccountRepository;
 import repositories.iAccountRepository;
 
 public class AccountService implements iAccountService {
@@ -58,6 +59,11 @@ public class AccountService implements iAccountService {
 	public Account getAccount(long id) {
 		LOGGER.info("In AccountService getAccount");
 		return repo.getAccount(id);
+	}
+	
+	public void setRepo(AccountRepository repo) {
+		LOGGER.info("In AccountService setRepo ");
+		this.repo = repo;
 	}
 
 }

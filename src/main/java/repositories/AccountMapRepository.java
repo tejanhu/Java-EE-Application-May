@@ -8,8 +8,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import constants.Constants;
-
-
 import util.JSONUtility;
 import entities.Account;
 

@@ -7,9 +7,11 @@ import javax.transaction.Transactional;
 
 import org.apache.log4j.Logger;
 
+import business.AccountService;
 import constants.Constants;
 import static javax.transaction.Transactional.TxType.REQUIRED;
 import static javax.transaction.Transactional.TxType.SUPPORTS;
+
 import util.JSONUtility;
 import entities.Account;
 
@@ -18,7 +20,7 @@ import entities.Account;
 @Transactional(REQUIRED)
 public class AccountRepository implements iAccountRepository{
 	
-	private static final Logger LOGGER = Logger.getLogger(AccountRepository.class);
+	private static final Logger LOGGER = Logger.getLogger(AccountRepositoryTest.class);
 	
 	@PersistenceContext(unitName = "primary")
 	private EntityManager em;
@@ -69,6 +71,13 @@ public class AccountRepository implements iAccountRepository{
         return em.find(Account.class, id);
     }
 
+	public void setManager(EntityManager em) {
+		this.em = em;
+	}
+
+	public void setUtil(JSONUtility util) {
+		this.util = util;
+	}
 
 
 

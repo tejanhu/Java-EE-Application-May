@@ -27,11 +27,11 @@ public class Transaction {
 	@NotEmpty
 	private String name;
 	
-	private Transaction() {
+	public Transaction() {
 	
 	}
 	
-	private Transaction(long transaction_id, String name) {
+	public Transaction(long transaction_id, String name) {
 		this.transaction_id = transaction_id;
 		this.name = name;
 	}

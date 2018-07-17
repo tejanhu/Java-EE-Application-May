@@ -12,13 +12,14 @@ package interoperability.rest;
 
 import org.apache.log4j.Logger;
 
+import business.AccountService;
 import business.TransactionService;
 	import entities.Transaction;
 
 	@Path("/transaction")
 	public class TransactionRestEndPoint {
 		
-		private static final Logger LOGGER = Logger.getLogger(TransactionRestEndPoint.class);
+		private static final Logger LOGGER = Logger.getLogger(TransactionRestEndPointTest.class);
 
 		@Inject
 		private TransactionService transactionService;
@@ -61,6 +62,10 @@ import business.TransactionService;
 		public String deleteTransaction(@PathParam("id") long id){
 			LOGGER.info("In TransactionRestEndPoint deleteTransaction");
 			return transactionService.deleteTransaction(id);
+		}
+		
+		public void setService(TransactionService transactionService) {
+			this.transactionService = transactionService;
 		}
 		
 

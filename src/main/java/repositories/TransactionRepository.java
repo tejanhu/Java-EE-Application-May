@@ -17,7 +17,7 @@ import util.JSONUtility;
 @Transactional(REQUIRED)
 public class TransactionRepository implements iTransactionRepository{
 	
-	private static final Logger LOGGER = Logger.getLogger(TransactionRepository.class);
+	private static final Logger LOGGER = Logger.getLogger(TransactionRepositoryTest.class);
 	
 	@PersistenceContext(unitName = "primary")
 	private EntityManager em;
@@ -62,6 +62,14 @@ public class TransactionRepository implements iTransactionRepository{
 	public Transaction getTransaction(long id) {
 		LOGGER.info("In TransactionRepository getTransaction");
 		return em.find(Transaction.class, id);
+	}
+	
+	public void setManager(EntityManager em) {
+		this.em = em;
+	}
+
+	public void setUtil(JSONUtility util) {
+		this.util = util;
 	}
 
 	

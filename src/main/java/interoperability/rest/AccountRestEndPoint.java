@@ -16,7 +16,7 @@ import entities.Account;
 @Path("/account")
 public class AccountRestEndPoint {
 	
-	private static final Logger LOGGER = Logger.getLogger(AccountRestEndPoint.class);
+	private static final Logger LOGGER = Logger.getLogger(AccountRestEndPointTest.class);
 
 	@Inject
 	private AccountService accountService;
@@ -59,6 +59,10 @@ public class AccountRestEndPoint {
 	public String deleteAccount(@PathParam("id") long id){
 		LOGGER.info("In AccountRestEndPoint deleteAccount");
 		return accountService.deleteAccount(id);
+	}
+	
+	public void setService(AccountService accountService) {
+		this.accountService = accountService;
 	}
 	
 
